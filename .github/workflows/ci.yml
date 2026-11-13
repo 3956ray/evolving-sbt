@@ -1,0 +1,30 @@
+name: Contracts
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  reference-implementation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source and pinned dependencies
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          submodules: recursive
+          persist-credentials: false
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@dba66c27052e63476d886f22216e119ba7e615bf # v1
+        with:
+          version: v1.7.1
+      - name: Check formatting
+        run: forge fmt --check
+      - name: Compile and check contract sizes
+        run: forge build --sizes
+      - name: Run tests
+        run: forge test -vvv
+      - name: Run the local example
+        run: forge script script/Demo.s.sol:Demo
