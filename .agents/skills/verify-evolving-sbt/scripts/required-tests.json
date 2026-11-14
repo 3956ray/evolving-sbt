@@ -1,0 +1,80 @@
+{
+  "qualification": {
+    "contract": "ContributionQualifierTest",
+    "required_tests": [
+      "testQualificationRevocationImmediatelyInvalidatesUnchangedSBT",
+      "testQualificationRejectsInsufficientDuplicateAndInvalidIndices",
+      "testQualificationOnlyIssuerRevokesAndRevocationIsIdempotent",
+      "testQualificationRejectsZeroClaim",
+      "testQualificationRejectsWrongIssuerControllerAndPolicyBindings",
+      "testQualificationWrongRegistryCannotReplacePinnedRegistry",
+      "testQualificationRevocationScopedToTokenAndClaim",
+      "testQualificationPreRevocationSurvivesAdmission",
+      "testQualificationRevocationEventAndDomainRemainStable",
+      "testQualificationRecordExpiryInclusiveBoundary",
+      "testQualificationNamespaceExpiry",
+      "testQualificationUpdatesPausedStillAllowsIndependentRevocation",
+      "testQualificationFullHistoryStillAllowsIndependentRevocation",
+      "testQualificationUseControlsSuspensionAndTerminalRevocation",
+      "testQualificationCorrectionsDoNotCountAsAnotherExperience",
+      "testQualificationBurnedAbsentAndUninitializedCredentialsFail",
+      "testFuzzQualificationRevocationDoesNotDependOnHolderUpdate"
+    ],
+    "suite": "test/ContributionQualifier.t.sol:ContributionQualifierTest"
+  },
+  "initialization": {
+    "contract": "EvolvingSBTTest",
+    "required_tests": [
+      "testNamespaceRegistrationIsImmutableAndAdminOnly",
+      "testRelayedInitializeRequiresBothAuthorityAndHolderConsent",
+      "testHolderCanDirectlyConsentToAuthorizedInitialization",
+      "testIssuerCannotInitializeWithoutControllerAuthority"
+    ],
+    "suite": "test/EvolvingSBT.t.sol:EvolvingSBTTest"
+  },
+  "growth": {
+    "contract": "EvolvingSBTTest",
+    "required_tests": [
+      "testAppendChangesHeadAndAdvancesExactlyOneRevision",
+      "testDuplicateExperienceCannotBeCreditedWithNewClaimId",
+      "testDuplicateClaimIdRejectedEvenWithNewExperience",
+      "testCorrectionMustRetainExperienceIdentity",
+      "testCorrectionAppendsReplacementAndOldClaimCannotBeCorrectedAgain",
+      "testStateRootsAndStateHashesHaveIndependentReproducibleEncoding",
+      "testRecordCapIncludesCorrectionsAndDoesNotPreventRevocation",
+      "testRejectedCorrectionLeavesNoPartialSupersessionOrDedupChange",
+      "testFuzzCorrectionChainsPreserveHistoryAndExperienceDedup"
+    ],
+    "suite": "test/EvolvingSBT.t.sol:EvolvingSBTTest"
+  },
+  "validity": {
+    "contract": "EvolvingSBTTest",
+    "required_tests": [
+      "testUseControlsAreIndependentFromUpdateControls",
+      "testPolicyControlsRequireNamespaceController",
+      "testAppendCannotResumeOrExtendValidity",
+      "testRevocationIsTerminalAndNamespaceCannotBeReset",
+      "testExpiryIsCheckedAtUseTimeAndOnlyControllerCanExtend",
+      "testExpiryOfIndividualRecordDoesNotChangeNamespaceValidity",
+      "testSuspendResumePreservesExperiencesAndDeduplication"
+    ],
+    "suite": "test/EvolvingSBT.t.sol:EvolvingSBTTest"
+  },
+  "authorization": {
+    "contract": "EvolvingSBTTest",
+    "required_tests": [
+      "testArbitraryRootRejectedEvenWhenIssuerSignsIt",
+      "testEvidenceCannotBeReplacedUnderAnExistingAuthorization",
+      "testOnlyOneCompetingUpdateCanUseSamePredecessor",
+      "testExactSameSignedUpdateCannotBeReplayed",
+      "testWrongPredecessorHashRejectedEvenWithCorrectRevisionAndSignature",
+      "testPauseResumeDoesNotReactivatePendingAuthorization",
+      "testChainDomainPreventsCrossChainReplay",
+      "testContractDomainPreventsCrossDeploymentReplay",
+      "testSignatureBindsCredentialId",
+      "testSignatureBindsNamespaceEvenWithSameAuthorities",
+      "testERC1271HolderConsentAndIssuerAuthorizationAreCheckedLive"
+    ],
+    "suite": "test/EvolvingSBT.t.sol:EvolvingSBTTest"
+  }
+}

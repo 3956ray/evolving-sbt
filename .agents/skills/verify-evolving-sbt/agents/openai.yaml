@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Evolving SBT"
+  short_description: "Verify SBT flows with isolated runtime evidence"
+  default_prompt: "Use $verify-evolving-sbt to verify the selected feature and preserve evidence after cleanup."
