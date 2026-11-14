@@ -38,3 +38,7 @@ The 32-record limit includes corrections. Exhausting it prevents further append 
 ## Reporting
 
 For reproducible issues in this public prototype, open a GitHub issue with the affected commit, the violated property, and a minimal test. Do not include real private keys or private credential data. The repository does not operate a bug-bounty program or promise a private disclosure channel.
+
+## Optional public qualification extension
+
+The v0.1 limitations above describe the core. `ClaimRevocationRegistry` and `ContributionQualifier` now provide an application-pinned independent per-claim revocation path and bounded public predicate. Their deployment/issuer/registry trust assumptions and failure behavior are defined in [qualification-profile.md](docs/qualification-profile.md). The application must pin its trusted consumer; a user-created consumer is not authoritative. No caller authentication, private presentation or one-time entitlement is provided by a true predicate. This extension is not independently audited.

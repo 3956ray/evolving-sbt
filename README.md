@@ -43,6 +43,12 @@ Signature verification establishes that a recognized authority authorized a part
 
 Record inclusion and current qualification are separate. Historical expired records may be admitted, and an expired namespace can continue accumulating records while its lifecycle status remains active. Consumers must check current namespace usability and record validity when making a decision. No balance, contribution count, or reputation score is automatically produced by this profile.
 
+## v0.2 first slice — public qualification
+
+The optional `ClaimRevocationRegistry` and `ContributionQualifier` add issuer-controlled single-claim revocation and a public two-contribution predicate. Revocation invalidates qualification without a holder update, including while updates are paused or history is full. The application pins the consumer's immutable registry configuration; users cannot select a fresh registry during verification.
+
+See [qualification profile](docs/qualification-profile.md) for trust binding, correction semantics and commands, and [private profile design](docs/private-qualification-profile.md) for the future proof relation. This slice does not implement private presentations, authenticated caller admission, one-time consumption, recovery or registry migration. The v0.1 core and public record schema remain unchanged. Run `forge test --match-contract ContributionQualifierTest -vvvv` or the project verification skill's `--feature qualification` route.
+
 ## Run locally
 
 Install [Foundry](https://getfoundry.sh/introduction/installation/), then:

@@ -295,3 +295,7 @@ A consumer must additionally evaluate the current status and validity of the rec
 This implementation does not include an independent issuer revocation registry. Namespace revocation is not a substitute for external per-claim revocation. It also does not evaluate an application's complete eligibility predicate or track consumption of an entitlement.
 
 The following are not implemented: policy migration, authority rotation, account recovery, cross-chain finality, source adapters, private material delivery, ZK proving and verification, anonymous credential registry membership, and one-time application admission. Their proposed requirements are described in the [discussion](discussion.md) and [roadmap](roadmap.md).
+
+## Optional application extension
+
+The v0.1 implementation specified above remains unchanged. The separate [public qualification profile](qualification-profile.md) supplies independent per-claim revocation and a two-contribution consumer with application-pinned trust configuration. It does not change the core ABI or make revocation part of the existing state root.

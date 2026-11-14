@@ -12,6 +12,8 @@ The implementation is transparent. All submitted data and state are observable. 
 
 ## v0.2 — Current qualification and application consumption
 
+First slice implemented: fixed-policy single-claim revocation and public two-contribution qualification, with rejection tests. See [profile](qualification-profile.md). One-time consumption, recovery continuity and authenticated balance checkpoints below remain planned.
+
 Add an independently operated issuer revocation registry and a small public-data qualification example. Revocation must affect qualification even when the holder does not update the SBT. A cached level or score must expose enough dependencies for current validation.
 
 Add application-side one-time entitlement consumption with an explicitly scoped identifier and atomic validation plus consumption. Updating the SBT or regenerating a presentation must not create another copy of the same entitlement. Recovery must preserve the identity used for consumption.
